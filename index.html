@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto auto;
+        flex-direction: column;
+        padding-top: 10%;
+    }
+    .main{
+        border: 2px solid black;
+        padding: 50px 100px;
+        width: 30%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+
+        align-items: center;
+        background-color: skyblue;
+        color: white;
+        font-weight: bolder;
+
+        .num{
+            padding: 0 20px;
+        }
+        
+    }
+    button{
+            font-size: 2rem;
+            padding: 5px 10px;
+            border-radius: 10px;
+
+        }
+        .color{
+            font-size: 2rem;
+            font-weight: bolder;
+        }
+</style>
+
+<body>
+    <div class="main">
+        <button class="inc">+</button>
+        <but class="num">0</but>
+        <button class="dec">-</button>
+    </div>
+    <p class="color">#ffffff</p>
+    <button class="btn">Change bg</button>
+
+    <script>
+        const inc = document.querySelector('.inc')
+        const dec = document.querySelector('.dec')
+        const num = document.querySelector('.num')
+        const btn = document.querySelector('.btn');
+        const colorText = document.querySelector('.color');
+
+        const hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+        ]; 
+
+        const generatehex = () => {
+            let hexColor = '#';
+            for(let i=0; i<6 ; i++){
+                hexColor += hex[Math.floor(Math.random() * hex.length)]
+            }
+
+            return hexColor ;
+        }
+
+        inc.addEventListener('click', ()=>{
+            num.innerHTML = parseInt(num.innerHTML)+1
+          
+        })
+
+        dec.addEventListener('click', ()=>{
+           if(num.innerHTML == 0) return 
+
+           else{
+            num.innerHTML = parseInt(num.innerHTML)-1
+           }
+        })
+
+        btn.addEventListener('click', () => {
+            const hexcolor = generatehex();
+            document.body.style.backgroundColor = hexcolor ;
+            // btn.style.backgroundColor = hexcolor ;
+            colorText.textContent = hexcolor ;
+        })
+
+        
+    </script>
+</body>
+</html>
